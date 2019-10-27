@@ -4,10 +4,13 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -41,26 +44,29 @@ public class SuperHeroAdapter extends RecyclerView.Adapter<SuperHeroAdapter.MyVi
         SuperHero hero = heroList.get(position);
         //set text heroName berdasarkan data dari model hero
         holder.heroName.setText(hero.getHeroName());
+        Picasso.get()
+                .load(hero.getImgUrl())
+                .placeholder(R.drawable.ic_launcher_background)
+                .error(R.drawable.ic_launcher_foreground)
+                .fit()
+                .into(holder.heroImg);
     }
 
     @Override
     public int getItemCount() {
         return (heroList != null) ? heroList.size() : 0;
-        /*for non shorthand people*/
-        /*if(heroList!=null){
-          return heroList.size();
-        }else{
-          return 0;
-        }*/
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView heroName;
+        public ImageView heroImg;
+
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             //variabel disesuaikan dengan layout, karena pada layout item_super_hero terdapat satu
             //TextView maka pada kode program ini dibuat satu TextView yang melakukan findViewById ke id layout yang bersesuaian
             heroName = itemView.findViewById(R.id.heroName);
+            heroImg = itemView.findViewById(R.id.heroImg);
         }
     }
 }
