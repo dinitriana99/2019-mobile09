@@ -24,18 +24,29 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         //menyambungkan rvSuperHero ke layout
         rvSuperHero = findViewById(R.id.rvSuperHero);
+
         //Membuat object hero
         SuperHero hero = new SuperHero("Petruk", R.drawable.petruk);
         //menambahkan hero ke listSuperHero
         listSuperHero.add(hero);
-        //membuat object hero baru
+
         hero = new SuperHero("Gareng", R.drawable.gareng);
         //menambahkan hero baru ke listSuperhero
         listSuperHero.add(hero);
+
+        hero = new SuperHero("Nakula Sadewa", R.drawable.nakula_sadewa);
+        //menambahkan hero baru ke listSuperhero
+        listSuperHero.add(hero);
+
+        hero = new SuperHero("Yudistira", R.drawable.yudistira);
+        //menambahkan hero baru ke listSuperhero
+        listSuperHero.add(hero);
+
         //Instansiasi Adapter
         SuperHeroAdapter superHeroAdapter = new SuperHeroAdapter(listSuperHero);
+
         //set adapter dan layoutmanager
         rvSuperHero.setAdapter(superHeroAdapter);
-        rvSuperHero.setLayoutManager(new LinearLayoutManager(this));
+        rvSuperHero.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false));
     }
 }
