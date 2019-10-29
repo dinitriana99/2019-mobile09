@@ -3,6 +3,7 @@ package id.ac.polinema.recyclerviewsangatsederhana;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -29,15 +30,12 @@ public class MainActivity extends AppCompatActivity {
         SuperHero hero = new SuperHero("Petruk", R.drawable.petruk);
         //menambahkan hero ke listSuperHero
         listSuperHero.add(hero);
-
         hero = new SuperHero("Gareng", R.drawable.gareng);
         //menambahkan hero baru ke listSuperhero
         listSuperHero.add(hero);
-
         hero = new SuperHero("Nakula Sadewa", R.drawable.nakula_sadewa);
         //menambahkan hero baru ke listSuperhero
         listSuperHero.add(hero);
-
         hero = new SuperHero("Yudistira", R.drawable.yudistira);
         //menambahkan hero baru ke listSuperhero
         listSuperHero.add(hero);
@@ -47,6 +45,6 @@ public class MainActivity extends AppCompatActivity {
 
         //set adapter dan layoutmanager
         rvSuperHero.setAdapter(superHeroAdapter);
-        rvSuperHero.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false));
+        rvSuperHero.setLayoutManager(new GridLayoutManager(this, 2, GridLayoutManager.VERTICAL, false));
     }
 }
